@@ -5,7 +5,8 @@ public class Conga {
         Scanner input = new Scanner(System.in);
         System.out.print("So ga trong trang trai: ");
         int soGa = input.nextInt();
-        
+        boolean kiemtratuoi;
+        boolean cannang; 
         int gioiTinh;
         int gaCon;
         float canNang;
@@ -14,7 +15,8 @@ public class Conga {
         int gaTrong = 0;
         int tongCanNangCuaGaTrong = 0;
         int tongTuoiCuaGaMai = 0;
-
+float trungBinhCanNangCuaGaTrong = 0;
+float trungBinhTuoiCuaGaMai = 0;
         for(int i = 0; i < soGa; i++) {
             System.out.print("Gioi tinh (0: Ga trong, 1: Ga mai): ");
             gioiTinh = input.nextInt();
@@ -31,14 +33,25 @@ public class Conga {
             if(gioiTinh == 0) {
                 gaTrong++;
                 tongCanNangCuaGaTrong += canNang;
+                if(gaTrong == 0 ){
+                    trungBinhCanNangCuaGaTrong = 0;
+                    System.out.println("Khong co ga trong nhe");
+                }else{
+                    trungBinhCanNangCuaGaTrong = (float) tongCanNangCuaGaTrong / gaTrong;
+                }
             } else if(gioiTinh == 1) {
                 gaMai++;
                 tongTuoiCuaGaMai += tuoi;
+
+                if(gaMai == 0){
+               System.out.println("Khong co ga mai nhe");
+                    trungBinhTuoiCuaGaMai = 0;
+                }else{
+                 trungBinhTuoiCuaGaMai = (float) tongTuoiCuaGaMai / gaMai;
+
+                }
             }
         }
-        
-        float trungBinhCanNangCuaGaTrong = (float) tongCanNangCuaGaTrong / gaTrong;
-        float trungBinhTuoiCuaGaMai = (float) tongTuoiCuaGaMai / gaMai;
         
         if(gaTrong / gaMai % 4 == 0 || gaMai / gaTrong % 4 == 0) {
             System.out.println("Co ti le dep");
